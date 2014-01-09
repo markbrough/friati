@@ -1,5 +1,5 @@
 DAC3DAC5,DAC3,DAC5,TEXT
-110,110,,EDUCATION
+110,110,,Education
 111,111,,"Éducation, niveau non spécifié"
 11110,,11110,Politique de l’éducation et gestion administrative
 11120,,11120,Équipements scolaires et formation
@@ -15,7 +15,7 @@ DAC3DAC5,DAC3,DAC5,TEXT
 114,114,,Éducation post-secondaire
 11420,,11420,Enseignement supérieur
 11430,,11430,Formation technique supérieure de gestion
-120,120,,SANTE
+120,120,,Santé
 121,121,,"Santé, général"
 12110,,12110,Politique de la santé et gestion administrative
 12181,,12181,Éducation et formation médicales
@@ -30,13 +30,13 @@ DAC3DAC5,DAC3,DAC5,TEXT
 12262,,12262,Lutte contre le paludisme
 12263,,12263,Lutte contre la tuberculose
 12281,,12281,Formation de personnel de santé
-130,130,,POLITIQUE EN MATIERE DE POPULATION/SANTE ET FERTILITE
+130,130,,Politique en matière de population / santé et fertilité
 13010,,13010,Politique/programmes en matière de population et gestion administrative
 13020,,13020,Soins en matière de fertilité
 13030,,13030,Planification familiale 
 13040,,13040,Lutte contre les MST et VIH/sida 
 13081,,13081,Formation de personnel  en matière de population et de santé et fertilité
-140,140,,EAU ET ASSAINISSEMENT
+140,140,,Eau et assainissement
 14010,,14010,Politique et gestion administrative du secteur de l’eau
 14015,,14015,Préservation des ressources en eau (y compris collecte de données)
 14020,,14020,Approvisionnement en eau et assainissement – systèmes à grande échelle
@@ -48,7 +48,7 @@ DAC3DAC5,DAC3,DAC5,TEXT
 14040,,14040,Aménagement de bassins fluviaux
 14050,,14050,Traitement des déchets
 14081,,14081,Éducation et formation en matière d’approvisionnement en eau et d’assainissement
-150,150,,GOUVERNEMENT ET SOCIETE CIVILE
+150,150,,Gouvernement et société civile
 151,151,,"Gouvernement et société civile, général"
 15110,,15110,Politiques publiques et gestion administrative
 15111,,15111,Gestion des finances publiques
@@ -68,7 +68,7 @@ DAC3DAC5,DAC3,DAC5,TEXT
 15240,,15240,Réintégration et contrôle des armes légères et de petit calibre
 15250,,15250,Enlèvement des mines terrestres et restes explosifs de guerre
 15261,,15261,Enfants soldats (Prévention et démobilisation) 
-160,160,,INFRASTRUCTURE ET SERVICES SOCIAUX DIVERS
+160,160,,Infrastructure et services sociaux divers
 16010,,16010,Services sociaux
 16020,,16020,Politique de l’emploi et gestion administrative
 16030,,16030,Politique du logement et gestion administrative
@@ -78,7 +78,7 @@ DAC3DAC5,DAC3,DAC5,TEXT
 16062,,16062,Renforcement des capacités statistiques
 16063,,16063,Lutte contre le trafic de drogues
 16064,,16064,Atténuation de l’impact social du VIH/sida 
-210,210,,TRANSPORTS ET ENTREPOSAGE
+210,210,,Transports et entreposage
 21010,,21010,Politique des transports et gestion administrative
 21020,,21020,Transport routier
 21030,,21030,Transport ferroviaire
@@ -86,12 +86,12 @@ DAC3DAC5,DAC3,DAC5,TEXT
 21050,,21050,Transport aérien
 21061,,21061,Stockage
 21081,,21081,Éducation/formation dans les transports et le stockage
-220,220,,COMMUNICATIONS
+220,220,,Communications
 22010,,22010,Politique des communications et gestion administrative
 22020,,22020,Télécommunications
 22030,,22030,"Radio, télévision, presse écrite"
 22040,,22040,Technologies de l’information et de la communication (TIC)
-230,230,,PRODUCTION ET DISTRIBUTION D’ENERGIE
+230,230,,Production et distribution d'énergie
 23010,,23010,Politique de l’énergie et gestion administrative
 23020,,23020,Production d’énergie (sources non renouvelables)
 23030,,23030,Production d’énergie (sources renouvelables)
@@ -109,16 +109,16 @@ DAC3DAC5,DAC3,DAC5,TEXT
 23070,,23070,Biomasse 
 23081,,23081,Éducation et formation dans le domaine de l’énergie
 23082,,23082,Recherche dans le domaine de l’énergie
-240,240,,BANQUES ET SERVICES FINANCIERS
+240,240,,Banques et services financiers
 24010,,24010,Politique des finances et gestion administrative
 24020,,24020,Institutions monétaires
 24030,,24030,Intermédiaires financiers officiels
 24040,,24040,Intermédiaires financiers du secteur informel et semi formel
 24081,,24081,Éducation/formation dans la banque et les services financiers  
-250,250,,ENTREPRISES ET AUTRES SERVICES
+250,250,,Entreprises et autres services
 25010,,25010,Services et institutions de soutien commerciaux
 25020,,25020,Privatisation
-311,311,,AGRICULTURE
+311,311,,Agriculture
 31110,,31110,Politique agricole et gestion administrative
 31120,,31120,Développement agricole
 31130,,31130,Ressources en terres cultivables
@@ -137,14 +137,14 @@ DAC3DAC5,DAC3,DAC5,TEXT
 31193,,31193,Services financiers agricoles
 31194,,31194,Coopératives agricoles
 31195,,31195,Services vétérinaires (bétail)
-312,312,,SYLVICULTURE
+312,312,,Sylviculture
 31210,,31210,Politique de la sylviculture et gestion administrative
 31220,,31220,Développement sylvicole
 31261,,31261,Reboisement (bois et charbon de bois)
 31281,,31281,Éducation et formation en sylviculture
 31282,,31282,Recherche en sylviculture
 31291,,31291,Services sylvicoles
-313,313,,PECHE
+313,313,,Pêche
 31310,,31310,Politique de la pêche et gestion administrative
 31320,,31320,Développement de la pêche
 31381,,31381,Éducation et formation dans le domaine de la pêche
@@ -168,7 +168,7 @@ DAC3DAC5,DAC3,DAC5,TEXT
 32171,,32171,Construction mécanique et électrique
 32172,,32172,Matériel de transport
 32182,,32182,Recherche et développement technologiques
-322,322,,INDUSTRIES EXTRACTIVES
+322,322,,Industries extractives
 32210,,32210,Politique de l’industrie extractive et gestion administrative
 32220,,32220,Prospection et exploration des minerais
 32261,,32261,Charbon
@@ -179,7 +179,7 @@ DAC3DAC5,DAC3,DAC5,TEXT
 32266,,32266,Minerais industriels
 32267,,32267,Engrais minéraux
 32268,,32268,Ressources des fonds marins
-323,323,,CONSTRUCTION
+323,323,,Construction
 32310,,32310,Politique de la construction et gestion administrative
 331,331,,POLITIQUE COMMERCIALE ET REGLEMENTATIONS ET AJUSTMENT LIE AU COMMERCE
 33110,,33110,Politique commerciale et gestion administrative
