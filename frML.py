@@ -161,14 +161,15 @@ def download_data():
             l = Element("location")
             lname = Element("name")
             lname.text = location["location"]
-            lcoords = Element("coordinates")
-            lcoords.set("latitude", location["latitude"])
-            lcoords.set("longitude", location["longitude"])
-            # This should probably be set for each location, but they seem
-            # to mostly refer to towns etc.
-            lcoords.set("precision", "3")
+            if location["latitude"] != "":
+                lcoords = Element("coordinates")
+                lcoords.set("latitude", location["latitude"])
+                lcoords.set("longitude", location["longitude"])
+                # This should probably be set for each location, but they seem
+                # to mostly refer to towns etc.
+                lcoords.set("precision", "3")
+                l.append(lcoords)
             l.append(lname)
-            l.append(lcoords)
             activity.append(l)
         return activity
 
@@ -466,7 +467,6 @@ def download_data():
 
         csv_file = open(CSV_FILE)
         csv_data = unicodecsv.DictReader(csv_file)
-        print csv_data.fieldnames
 
         print "Imported projects data, generating activities..."
 
