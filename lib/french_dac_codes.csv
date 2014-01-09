@@ -1,0 +1,240 @@
+DAC3DAC5,DAC3,DAC5,TEXT
+110,110,,EDUCATION
+111,111,,"Éducation, niveau non spécifié"
+11110,,11110,Politique de l’éducation et gestion administrative
+11120,,11120,Équipements scolaires et formation
+11130,,11130,Formation des enseignants
+11182,,11182,Recherche en éducation
+112,112,,Éducation de base
+11220,,11220,Enseignement primaire
+11230,,11230,Éducation pour une meilleure qualité de vie pour les jeunes et les adultes
+11240,,11240,Éducation de la petite enfance 
+113,113,,Éducation secondaire
+11320,,11320,Enseignement secondaire
+11330,,11330,Formation professionnelle
+114,114,,Éducation post-secondaire
+11420,,11420,Enseignement supérieur
+11430,,11430,Formation technique supérieure de gestion
+120,120,,SANTE
+121,121,,"Santé, général"
+12110,,12110,Politique de la santé et gestion administrative
+12181,,12181,Éducation et formation médicales
+12182,,12182,Recherche médicale
+12191,,12191,Services médicaux
+122,122,,Santé de base
+12220,,12220,Soins et services de santé de base
+12230,,12230,Infrastructure pour la santé de base
+12240,,12240,Nutrition de base
+12250,,12250,Lutte contre les maladies infectieuses
+12261,,12261,Éducation sanitaire
+12262,,12262,Lutte contre le paludisme
+12263,,12263,Lutte contre la tuberculose
+12281,,12281,Formation de personnel de santé
+130,130,,POLITIQUE EN MATIERE DE POPULATION/SANTE ET FERTILITE
+13010,,13010,Politique/programmes en matière de population et gestion administrative
+13020,,13020,Soins en matière de fertilité
+13030,,13030,Planification familiale 
+13040,,13040,Lutte contre les MST et VIH/sida 
+13081,,13081,Formation de personnel  en matière de population et de santé et fertilité
+140,140,,EAU ET ASSAINISSEMENT
+14010,,14010,Politique et gestion administrative du secteur de l’eau
+14015,,14015,Préservation des ressources en eau (y compris collecte de données)
+14020,,14020,Approvisionnement en eau et assainissement – systèmes à grande échelle
+14021,,14021,Approvisionnement en eau – systèmes à grande échelle
+14022,,14022,Assainissement – systèmes à grande échelle
+14030,,14030,Approvisionnement en eau potable et assainissement - dispositifs de base
+14031,,14031,Approvisionnement en eau potable – dispositifs de base
+14032,,14032,Assainissement – dispositifs de base
+14040,,14040,Aménagement de bassins fluviaux
+14050,,14050,Traitement des déchets
+14081,,14081,Éducation et formation en matière d’approvisionnement en eau et d’assainissement
+150,150,,GOUVERNEMENT ET SOCIETE CIVILE
+151,151,,"Gouvernement et société civile, général"
+15110,,15110,Politiques publiques et gestion administrative
+15111,,15111,Gestion des finances publiques
+15112,,15112,Décentralisation et soutien aux administrations infranationales
+15113,,15113,Organisations et institutions pour la lutte contre la corruption 
+15130,,15130,Développement des services légaux et judiciaires
+15150,,15150,Participation démocratique et société civile
+15151,,15151,Élections
+15152,,15152,Assemblées législatives et partis politiques
+15153,,15153,Médias et liberté de l’information
+15160,,15160,Droits de la personne
+15170,,15170,Organisations et institutions pour l’égalité des femmes
+152,152,,"Prévention et règlement des conflits, paix et sécurité"
+15210,,15210,Gestion et réforme des systèmes de sécurité
+15220,,15220,"Dispositifs civils de construction de la paix, et de prévention et de règlement des conflits "
+15230,,15230,Participation à des opérations internationales de maintien de la paix
+15240,,15240,Réintégration et contrôle des armes légères et de petit calibre
+15250,,15250,Enlèvement des mines terrestres et restes explosifs de guerre
+15261,,15261,Enfants soldats (Prévention et démobilisation) 
+160,160,,INFRASTRUCTURE ET SERVICES SOCIAUX DIVERS
+16010,,16010,Services sociaux
+16020,,16020,Politique de l’emploi et gestion administrative
+16030,,16030,Politique du logement et gestion administrative
+16040,,16040,Logement à coût réduit
+16050,,16050,Aide plurisectorielle pour les services sociaux de base
+16061,,16061,Culture et loisirs
+16062,,16062,Renforcement des capacités statistiques
+16063,,16063,Lutte contre le trafic de drogues
+16064,,16064,Atténuation de l’impact social du VIH/sida 
+210,210,,TRANSPORTS ET ENTREPOSAGE
+21010,,21010,Politique des transports et gestion administrative
+21020,,21020,Transport routier
+21030,,21030,Transport ferroviaire
+21040,,21040,Transport par voies d’eau
+21050,,21050,Transport aérien
+21061,,21061,Stockage
+21081,,21081,Éducation/formation dans les transports et le stockage
+220,220,,COMMUNICATIONS
+22010,,22010,Politique des communications et gestion administrative
+22020,,22020,Télécommunications
+22030,,22030,"Radio, télévision, presse écrite"
+22040,,22040,Technologies de l’information et de la communication (TIC)
+230,230,,PRODUCTION ET DISTRIBUTION D’ENERGIE
+23010,,23010,Politique de l’énergie et gestion administrative
+23020,,23020,Production d’énergie (sources non renouvelables)
+23030,,23030,Production d’énergie (sources renouvelables)
+23040,,23040,Transmission et distribution d’électricité
+23050,,23050,Distribution de gaz
+23061,,23061,Centrales alimentées au fuel
+23062,,23062,Centrales alimentées au gaz
+23063,,23063,Centrales alimentées au charbon
+23064,,23064,Centrales nucléaires
+23065,,23065,Centrales et barrages hydroélectriques
+23066,,23066,Énergie géothermique
+23067,,23067,Énergie solaire
+23068,,23068,Énergie éolienne
+23069,,23069,Énergie marémotrice
+23070,,23070,Biomasse 
+23081,,23081,Éducation et formation dans le domaine de l’énergie
+23082,,23082,Recherche dans le domaine de l’énergie
+240,240,,BANQUES ET SERVICES FINANCIERS
+24010,,24010,Politique des finances et gestion administrative
+24020,,24020,Institutions monétaires
+24030,,24030,Intermédiaires financiers officiels
+24040,,24040,Intermédiaires financiers du secteur informel et semi formel
+24081,,24081,Éducation/formation dans la banque et les services financiers  
+250,250,,ENTREPRISES ET AUTRES SERVICES
+25010,,25010,Services et institutions de soutien commerciaux
+25020,,25020,Privatisation
+311,311,,AGRICULTURE
+31110,,31110,Politique agricole et gestion administrative
+31120,,31120,Développement agricole
+31130,,31130,Ressources en terres cultivables
+31140,,31140,Ressources en eau à usage agricole
+31150,,31150,Produits à usage agricole
+31161,,31161,Production agricole
+31162,,31162,Récoltes destinées à l’exportation
+31163,,31163,Bétail
+31164,,31164,Réforme agraire
+31165,,31165,Développement agricole alternatif
+31166,,31166,Vulgarisation agricole
+31181,,31181,Éducation et formation dans le domaine agricole
+31182,,31182,Recherche agronomique
+31191,,31191,Services agricoles
+31192,,31192,"Protection des plantes et des récoltes, lutte antiacridienne"
+31193,,31193,Services financiers agricoles
+31194,,31194,Coopératives agricoles
+31195,,31195,Services vétérinaires (bétail)
+312,312,,SYLVICULTURE
+31210,,31210,Politique de la sylviculture et gestion administrative
+31220,,31220,Développement sylvicole
+31261,,31261,Reboisement (bois et charbon de bois)
+31281,,31281,Éducation et formation en sylviculture
+31282,,31282,Recherche en sylviculture
+31291,,31291,Services sylvicoles
+313,313,,PECHE
+31310,,31310,Politique de la pêche et gestion administrative
+31320,,31320,Développement de la pêche
+31381,,31381,Éducation et formation dans le domaine de la pêche
+31382,,31382,Recherche dans le domaine de la pêche
+31391,,31391,Services dans le domaine de la pêche
+321,321,,INDUSTRIES MANUFACTURIERES
+32110,,32110,Politique de l’industrie et gestion administrative
+32120,,32120,Développement industriel
+32130,,32130,Développement des PME
+32140,,32140,Artisanat
+32161,,32161,Agro-industries
+32162,,32162,Industries forestières
+32163,,32163,"Industrie textile, cuirs et produits similaires"
+32164,,32164,Produits chimiques
+32165,,32165,Production d’engrais chimiques
+32166,,32166,"Ciment, chaux et plâtre"
+32167,,32167,Fabrication d’énergie
+32168,,32168,Produits pharmaceutiques
+32169,,32169,Industrie métallurgique de base
+32170,,32170,Industries des métaux non ferreux
+32171,,32171,Construction mécanique et électrique
+32172,,32172,Matériel de transport
+32182,,32182,Recherche et développement technologiques
+322,322,,INDUSTRIES EXTRACTIVES
+32210,,32210,Politique de l’industrie extractive et gestion administrative
+32220,,32220,Prospection et exploration des minerais
+32261,,32261,Charbon
+32262,,32262,Pétrole et gaz
+32263,,32263,Métaux ferreux
+32264,,32264,Métaux non ferreux
+32265,,32265,Métaux et minerais précieux
+32266,,32266,Minerais industriels
+32267,,32267,Engrais minéraux
+32268,,32268,Ressources des fonds marins
+323,323,,CONSTRUCTION
+32310,,32310,Politique de la construction et gestion administrative
+331,331,,POLITIQUE COMMERCIALE ET REGLEMENTATIONS ET AJUSTMENT LIE AU COMMERCE
+33110,,33110,Politique commerciale et gestion administrative
+33120,,33120,Facilitation du commerce 
+33130,,33130,Accords commerciaux régionaux
+33140,,33140,Négociations commerciales multilatérales
+33150,,33150,Ajustement lié au commerce
+33181,,33181,Éducation/formation dans le domaine du commerce
+332,332,,TOURISME
+33210,,33210,Politique du tourisme et gestion administrative
+400,400,,DESTINATION  PLURI-SECTO-RIELLE OU TRANSVERSALE
+410,410,,"Protection de l’environnement, général"
+41010,,41010,Politique de l’environnement et gestion administrative
+41020,,41020,Protection de la biosphère
+41030,,41030,Diversité biologique
+41040,,41040,Protection des sites
+41050,,41050,Prévention et lutte contre les inondations
+41081,,41081,Éducation et formation environnementales
+41082,,41082,Recherche environnementale
+430,430,,Autres multi secteurs
+43010,,43010,Aide plurisectorielle
+43030,,43030,Développement et gestion urbaine
+43040,,43040,Développement rural
+43050,,43050,Développement alternatif non agricole
+43081,,43081,Éducation et formation plurisectorielles
+43082,,43082,Institutions scientifiques et de recherche
+500,500,,AIDE-PROGRAMME ET AIDE SOUS FORME DE PRODUITS
+510,510,,Soutien budgétaire
+51010,,51010,Soutien budgétaire
+520,520,,Aide alimentaire à des fins de développement/aide à la sécurité alimentaire
+52010,,52010,Programmes de sécurité et d’aide alimentaire
+530,530,,Aide sous forme de produits : autre
+53030,,53030,Subventions à l’importation (biens d’équipement)
+53040,,53040,Subventions à l’importation (produits)
+600,600,,ACTIONS SE RAPPORTANT À LA DETTE
+60010,,60010,Action se rapportant à la dette
+60020,,60020,Annulation de la dette
+60030,,60030,Allégement de la dette multilatérale
+60040,,60040,Rééchelonnement d’échéances et refinancement
+60061,,60061,Échange de dette à des fins de développement
+60062,,60062,Autres échanges de dette
+60063,,60063,Rachat de la dette
+700,700,,AIDE HUMANITAIRE
+720,720,,Intervention d’urgence
+72010,,72010,Assistance matérielle et services d’urgence
+72040,,72040,Aide alimentaire d’urgence 
+72050,,72050,Coordination des secours et services de soutien et de protection
+730,730,,Reconstruction et réhabilitation
+73010,,73010,Aide à la reconstruction et réhabilitation
+740,740,,Prévention des catastrophes et préparation à leur survenue
+74010,,74010,Prévention des catastrophes et préparation à leur survenue
+910,910,,FRAIS ADMINISTRATIFS DES DONNEURS
+91010,,91010,Frais administratifs
+930,930,,REFUGIES DANS LE PAYS DONNEUR
+93010,,93010,Réfugiés dans le pays donneur
+998,998,,NON AFFECTE/ NON SPECIFIE
+99810,,99810,Secteur non spécifié
+99820,,99820,Sensibilisation au développement

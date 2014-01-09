@@ -1,0 +1,8 @@
+*.txt~
+*.html~
+*.py~
+*.pyc
+*.xml
+source/*.csv
+pyenv
+build
