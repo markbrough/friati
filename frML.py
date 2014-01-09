@@ -243,6 +243,7 @@ def download_data():
                     result.append(result_title)        
                     activity.append(result)
                 indicator = Element("indicator")
+                indicator.set("measure", "1")
                 result.append(indicator)
                 indicatortitle = Element("title")
                 indicatortitle.text = row[r]
@@ -269,6 +270,7 @@ def download_data():
                     result.append(result_title)        
                     activity.append(result)
                 indicator = Element("indicator")
+                indicator.set("measure", "1")
                 result.append(indicator)
                 indicatortitle = Element("title")
                 indicatortitle.text = row[r]
@@ -426,40 +428,41 @@ def download_data():
 
         activity = makeResults(row, activity)
 
-        transaction = Element("transaction")
-        activity.append(transaction)
-        ttype = Element("transaction-type")
-        ttype.set("code", "C")
-        ttype.text = "Commitment"
-        transaction.append(ttype)
+        if row["Activity Budget"] != "":
+            transaction = Element("transaction")
+            activity.append(transaction)
+            ttype = Element("transaction-type")
+            ttype.set("code", "C")
+            ttype.text = "Commitment"
+            transaction.append(ttype)
 
-        tvalue = Element("value")
-        tvalue.set('value-date', makeISO(row["Activity Dates (Start Date)"]))
-        tvalue.text = row["Activity Budget"]
-        transaction.append(tvalue)
+            tvalue = Element("value")
+            tvalue.set('value-date', makeISO(row["Activity Dates (Start Date)"]))
+            tvalue.text = row["Activity Budget"]
+            transaction.append(tvalue)
 
-        tdate = Element("transaction-date")
-        tdate.set("iso-date", makeISO(row["Activity Dates (Start Date)"]))
-        tdate.text=makeISO(row["Activity Dates (Start Date)"])
-        transaction.append(tdate)
+            tdate = Element("transaction-date")
+            tdate.set("iso-date", makeISO(row["Activity Dates (Start Date)"]))
+            tdate.text=makeISO(row["Activity Dates (Start Date)"])
+            transaction.append(tdate)
 
+        if row["Financial transaction (Disbursement & Expenditure)"] != "":
+            disbursement = Element("transaction")
+            activity.append(disbursement)
+            ttype = Element("transaction-type")
+            ttype.set("code", "D")
+            ttype.text = "Disbursement"
+            disbursement.append(ttype)
 
-        disbursement = Element("transaction")
-        activity.append(disbursement)
-        ttype = Element("transaction-type")
-        ttype.set("code", "D")
-        ttype.text = "Disbursement"
-        disbursement.append(ttype)
+            tvalue = Element("value")
+            tvalue.set('value-date', makeISO(row["Activity Dates (Start Date)"]))
+            tvalue.text = row["Financial transaction (Disbursement & Expenditure)"]
+            disbursement.append(tvalue)
 
-        tvalue = Element("value")
-        tvalue.set('value-date', makeISO(row["Activity Dates (Start Date)"]))
-        tvalue.text = row["Financial transaction (Disbursement & Expenditure)"]
-        disbursement.append(tvalue)
-
-        tdate = Element("transaction-date")
-        tdate.set("iso-date", datetime.now().date().isoformat())
-        tdate.text=datetime.now().date().isoformat()
-        disbursement.append(tdate)
+            tdate = Element("transaction-date")
+            tdate.set("iso-date", datetime.now().date().isoformat())
+            tdate.text=datetime.now().date().isoformat()
+            disbursement.append(tdate)
 
     try:
         print "Starting up ..."
