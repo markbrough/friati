@@ -446,7 +446,8 @@ def download_data():
             tdate.text=makeISO(row["Activity Dates (Start Date)"])
             transaction.append(tdate)
 
-        if row["Financial transaction (Disbursement & Expenditure)"] != "":
+        if ((row["Financial transaction (Disbursement & Expenditure)"] != "")
+                and (int(float(row["Financial transaction (Disbursement & Expenditure)"])) != 0)):
             disbursement = Element("transaction")
             activity.append(disbursement)
             ttype = Element("transaction-type")
@@ -491,7 +492,7 @@ def download_data():
         # TODO: Allow this to be an option on the command line.
         #doc=removeDuplicates(doc)
         doc = ElementTree(doc)
-        doc.write(XMLfilename,encoding='utf-8', xml_declaration=True)
+        doc.write(XMLfilename,encoding='utf-8', xml_declaration=True, pretty_print=True)
         #print "Segmenting files..."
         #prefix = 'afd'
         #output_directory = os.path.realpath('afd')+'/'
