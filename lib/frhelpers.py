@@ -3,6 +3,7 @@
 
 FR_STATUSES = {
             'en cours': '2',
+            'ex\xc3\xa9cution': '2',
             'termin\xe9': '3',
             'termin\xc3\xa9': '3',
             'achev\xe9': '3',
