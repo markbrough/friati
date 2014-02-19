@@ -28,25 +28,22 @@
 
 from lxml import etree
 from lxml.etree import *
-#from xml.etree.cElementTree import Element, ElementTree
 import urllib2
 import os
 import unicodecsv
 from datetime import datetime
 from lib import frhelpers
+from lib import xlsx_to_csv
 
-CSV_FILE = "source/projects.csv"
-LOCATIONS_CSV = 'source/projects-locations.csv'
-DOCUMENTS_CSV = 'source/projects-documents.csv'
-SECTORS_CSV = 'lib/french_dac_codes.csv'
+XLSX_FILE = "source/projects.xlsx"
+SECTORS_CSV = 'frML/lib/french_dac_codes.csv'
 
 # Basic data setup
 reporting_org = u'Minist\xe8re des Affaires \xe9trang\xe8res'
 reporting_org_id = u"FR-6"
 reporting_org_type = u"10"
 
-def download_data():
-    regions = {'MULTI-PAYS': '998'}
+def convert(input_filename, input_data, XMLfilename='fr-ML.xml'):
 
     def getDACSectors():
         DACsectors = []
@@ -60,18 +57,6 @@ def download_data():
 
     DACsectors = getDACSectors()
 
-    def getDocuments():
-        documents = []
-        docs_file = open(DOCUMENTS_CSV)
-        docs_data = unicodecsv.DictReader(docs_file)
-        for document in docs_data:
-            documents.append((
-                document['Standard activity identifier'][0:7], document['Activity Documents']
-            ))
-        return dict(documents)
-
-    documents = getDocuments()
-
     def dictMaker(locations):
         out = {}
         for location in locations:
@@ -83,18 +68,19 @@ def download_data():
         return out                        
 
     def getLocations():
+        coords_data = xlsx_to_csv.getDataFromFile(input_filename, input_data, u"LocationCoords")
+        coords = dict([ (row['LookupName'], row) for row in coords_data])
+
+        locations_data = xlsx_to_csv.getDataFromFile(input_filename, input_data, u"Locations")
+
         locations = []
-        locations_file = open(LOCATIONS_CSV)
-        locations_data = unicodecsv.DictReader(locations_file)
         for location in locations_data:
             locations.append((
                 location['Champs'], {'location': location['Sub-national Geographic Location'].strip(), 
-                                     'longitude': location['Longitude'], 
-                                     'latitude': location['Latitude']}
+                                     'longitude': coords[location['LookupLocation']]['Long'], 
+                                     'latitude': coords[location['LookupLocation']]['Lat']}
             ))
         return dictMaker(locations)
-
-    locations = getLocations()
 
     def correctCountry(name):
         countries = frhelpers.AFD_COUNTRIES
@@ -130,7 +116,7 @@ def download_data():
 
     def getExtendingOrg(org, typ):
         if (type(org) != list):
-            org=org.strip().encode('utf-8').lower()
+            org=org.strip().lower()
         mappings = frhelpers.FR_ORGS
         codes = frhelpers.FR_ORGS_CODES
         if typ =='id':
@@ -147,7 +133,7 @@ def download_data():
             extending_org.text = getExtendingOrg(org, "text")
             activity.append(extending_org)
 
-        org=org.strip().encode('utf-8').lower()
+        org=org.strip().lower()
         if org=="scac et afd":
             for o in ['scac', 'afd']:
                 _makeEO(o)
@@ -161,7 +147,8 @@ def download_data():
             l = Element("location")
             lname = Element("name")
             lname.text = location["location"]
-            if location["latitude"] != "":
+            if ((location["latitude"] != "") and 
+                    (location["latitude"] != "0")):
                 lcoords = Element("coordinates")
                 lcoords.set("latitude", location["latitude"])
                 lcoords.set("longitude", location["longitude"])
@@ -177,7 +164,7 @@ def download_data():
         if (row["Other activity identifiers"].strip() != ""):
             return row["Other activity identifiers"].replace(" ","")
         else:
-            return "ML-"+row["Champs "][7:]
+            return "ML-"+row["Champs"][7:]
 
     def getFinanceType(name, type):
         financetypes = frhelpers.FINANCETYPES
@@ -186,30 +173,18 @@ def download_data():
     def makeDocuments(row, activity):
         # If it's an AFD project, look to see if there is a related
         # AFD project in the documents file
-        if row["Reporting Organisation"] == 'AFD':
-            projectid = getIATIIdentifier(row)
-            doc_url = ""
-            try:
-                doc_url = documents[projectid]
-            except KeyError:
-                try:
-                    doc_url = documents[projectid[0:7]]
-                except KeyError:
-                    pass
-            except KeyError:
-                pass
-            if doc_url != "":
-                document_link = Element("document-link")
-                document_link.set("url", doc_url)
-                document_link.set("format", "text/html")
-                document_title = Element("title")
-                document_title.text = "Projet fiche"
-                document_link.append(document_title)
-                document_category = Element("category")
-                document_category.set("code", "A02")
-                document_category.text = "Objectives / Purpose of activity"
-                document_link.append(document_category)
-                activity.append(document_link)
+        if row["Activity Documents"] != "":
+            document_link = Element("document-link")
+            document_link.set("url", row["Activity Documents"])
+            document_link.set("format", "text/html")
+            document_title = Element("title")
+            document_title.text = "Projet fiche"
+            document_link.append(document_title)
+            document_category = Element("category")
+            document_category.set("code", "A02")
+            document_category.text = "Objectives / Purpose of activity"
+            document_link.append(document_category)
+            activity.append(document_link)
         return activity
 
     def makeResults(row, activity):
@@ -310,7 +285,8 @@ def download_data():
         
     def write_project(doc, row):
         #FIXME: currently excludes all activities with no project ID
-        if row["Champs "] == "":
+
+        if row["Champs"] == "":
             return
         
         activity = Element("iati-activity")
@@ -416,7 +392,7 @@ def download_data():
         sector.text = row["Sector (Agency specific)"]
         activity.append(sector)
 
-        activity = makeLocations(row["Champs "], locations, activity)
+        activity = makeLocations(row["Champs"], locations, activity)
 
         """
         activity_website = Element("activity-website")
@@ -465,41 +441,39 @@ def download_data():
             tdate.text=datetime.now().date().isoformat()
             disbursement.append(tdate)
 
-    try:
-        print "Starting up ..."
-        print "Importing projects data..."
+    print "Starting up ..."
+    print "Importing projects data ... (1/4)"
 
-        csv_file = open(CSV_FILE)
-        csv_data = unicodecsv.DictReader(csv_file)
+    csv_data = xlsx_to_csv.getDataFromFile(input_filename, input_data, u"Projets")
 
-        print "Imported projects data, generating activities..."
+    print "Imported projects data"
+    print "Generating locations ... (2/4)"
+    locations = getLocations()
 
+    print "Generated locations"
+    print "Generating activities ... (3/4)"
 
-        NSMAP = {"fr" : 'http://data.gouv.fr'}
+    NSMAP = {"fr" : 'http://data.gouv.fr'}
 
-        doc = Element('iati-activities', 
-                       nsmap = NSMAP)
-        doc.set("version", "1.03")
-        current_datetime = datetime.now().replace(microsecond=0).isoformat()
-        doc.set("generated-datetime",current_datetime)
+    doc = Element('iati-activities', 
+                   nsmap = NSMAP)
+    doc.set("version", "1.03")
+    current_datetime = datetime.now().replace(microsecond=0).isoformat()
+    doc.set("generated-datetime",current_datetime)
 
-        for row in csv_data:
-            write_project(doc, row)
+    for row in csv_data:
+        write_project(doc, row)
+	
+    print "Generated activities"
+    print "Writing activities ... (4/4)"
 
-        XMLfilename = 'fr-ML.xml'
-        print "Writing activities..."
+    doc = ElementTree(doc)
+    doc.write(XMLfilename,encoding='utf-8', xml_declaration=True, pretty_print=True)
+    print "Done"
+    return True
 
-        # TODO: Allow this to be an option on the command line.
-        #doc=removeDuplicates(doc)
-        doc = ElementTree(doc)
-        doc.write(XMLfilename,encoding='utf-8', xml_declaration=True, pretty_print=True)
-        #print "Segmenting files..."
-        #prefix = 'afd'
-        #output_directory = os.path.realpath('afd')+'/'
-        #iatisegmenter.segment_file(prefix, XMLfilename, output_directory)
-        print "Done"
-
-    except urllib2.HTTPError, e:
-        print "Error %s" % str(e)
-
-download_data()
+if __name__ == '__main__':
+    input_filename = "source/projects.xlsx"
+    input_data = open(input_filename).read()
+    if convert(input_filename, input_data):
+        print "Successfully converted your data"

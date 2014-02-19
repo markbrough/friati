@@ -1,3 +1,5 @@
 lxml
 unicodecsv
 xlrd
+flask
+flask-script

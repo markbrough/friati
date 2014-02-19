@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Convert France XLSX data to IATI format</title>
+
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="http://gregpike.net/demos/bootstrap-file-input/bootstrap.file-input.js"></script>
+<link type="text/css" media="screen" href="{{url_for('static', filename='vendor/bootstrap-glyphicons/css/bootstrap-glyphicons.css')}}" rel="stylesheet" />
+
+</head>
+<body>
+<div class="container">
+<div class="row">
+<h1>Results</h1>
+  {% if result %}
+    <p class="lead">Your file was successfully converted.</p>
+    <p><a href="{{url_for('static', filename=XMLfilename)}}" class="btn-success btn"><span class="glyphicon glyphicon-download"></span> <b>Download IATI-XML file</b></a></p>
+  {% else %}
+    <p class="lead">Sorry, there was an error converting your file:</p>
+    <div class="alert alert-danger">
+    {{error}}
+    </div>
+  {% endif %}
+</div>
+</div>
+<footer>
+<hr />
+<div class="container">
+    <div class="col-sm-3 pull-right">
+    <p>
+    Built by <a href="http://twitter.com/mark_brough">@mark_brough</a> for 
+    <a href="http://twitter.com/francediplo">@francediplo</a>
+    </p>
+    <p><a href="https://github.com/markbrough/friati">Source code</a> licensed under 
+    <a href="https://github.com/markbrough/friati/blob/master/README.md">MIT</a></p>
+    </div>
+</div>
+</footer>
+</body>
+</html>

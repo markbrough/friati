@@ -3,6 +3,10 @@
 *.py~
 *.pyc
 *.xml
-source/*.csv
+frML/source/*.csv
 pyenv
 build
+*.htm~
+*.csv~
+*.md~
+*.css~

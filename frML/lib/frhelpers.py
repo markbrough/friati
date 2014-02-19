@@ -19,16 +19,18 @@ STATUSCODES = {
         }
 
 FR_ORGS = {
-            'afd': 'FR-3',
-            'mae': 'FR-6',
-            'scac': 'FR-99',
-            'scac et afd': 'FR-3'
+            u'afd': 'FR-3',
+            u'mae': 'FR-6',
+            u'scac': 'FR-99',
+            u"service de coop\xc3\xa9ration et d'action culturelle": 'FR-99',
+            u"service de coop\xe9ration et d'action culturelle": 'FR-99',
+            u'scac et afd': 'FR-3'
 }
 
 FR_ORGS_CODES = {
             'FR-3': 'AFD',
             'FR-6': 'MAE',
-            'FR-99': 'SCAC'
+            'FR-99': u"Service de Coop\xe9ration et d'Action Culturelle"
 }
 
 FINANCETYPES = {
