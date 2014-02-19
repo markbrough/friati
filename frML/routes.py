@@ -41,5 +41,5 @@ def converter():
 
     return render_template("convert.html", 
                            result=result,
-                           XMLfilename="data/"XMLfilename,
+                           XMLfilename="data/"+XMLfilename,
                            error=error)
