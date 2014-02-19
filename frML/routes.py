@@ -33,6 +33,7 @@ def converter():
                 # Can we pass nicer error messages to the user?
                 error = "There was an unknown error. Please ensure your data \
                 is correctly formatted according to a predefined template."
+                error = e
                 pass
         else:
             error = "That file extension is not permitted. Files must be of \

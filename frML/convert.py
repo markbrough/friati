@@ -36,7 +36,7 @@ from lib import frhelpers
 from lib import xlsx_to_csv
 
 XLSX_FILE = "source/projects.xlsx"
-SECTORS_CSV = 'frML/lib/french_dac_codes.csv'
+SECTORS_CSV = os.path.realpath('frML/lib/french_dac_codes.csv')
 
 # Basic data setup
 reporting_org = u'Minist\xe8re des Affaires \xe9trang\xe8res'
