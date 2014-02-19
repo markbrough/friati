@@ -18,6 +18,16 @@
 <h1>Results</h1>
   {% if result %}
     <p class="lead">Your file was successfully converted.</p>
+    <div class="alert alert-warning">
+    <h3>Please check this file validates!</h3>
+    <p>Everything appeared to go well, but there can still be errors in the
+    output. It's important to check this file validates against the IATI-XML 
+    schema.</p>
+    <p>After clicking on the "Check Validation" button below, please click the blue 
+    "Test Validation" link on the page that appears.</p>
+    <p><a class="btn btn-warning" href="http://validator.iatistandard.org/?url={{url_for('static', filename=XMLfilename, _external=True)}}" target="_blank">Check validation &raquo;</a>
+    </p>
+    </div>
     <p><a href="{{url_for('static', filename=XMLfilename)}}" class="btn-success btn"><span class="glyphicon glyphicon-download"></span> <b>Download IATI-XML file</b></a></p>
   {% else %}
     <p class="lead">Sorry, there was an error converting your file:</p>
