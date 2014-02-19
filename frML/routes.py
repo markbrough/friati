@@ -26,7 +26,7 @@ def converter():
             try:
                 result = convert.convert(input_filename, 
                                          input_data, 
-                                         "frML/static/data/"+XMLfilename)
+                                         "data/"+XMLfilename)
                 error = None
             except Exception, e:
                 result = False
@@ -45,7 +45,7 @@ def converter():
         input_data = open(input_filename).read()
         result = convert.convert(input_filename, 
                                  input_data, 
-                                 "frML/static/data/"+XMLfilename)
+                                 "data/"+XMLfilename)
 
     return render_template("convert.html", 
                            result=result,

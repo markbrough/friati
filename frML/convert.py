@@ -45,6 +45,7 @@ reporting_org_id = u"FR-6"
 reporting_org_type = u"10"
 
 def convert(input_filename, input_data, XMLfilename='fr-ML.xml'):
+    XMLfilename = os.path.join(thisfile_dir, 'static/data/', XMLfilename)
 
     def getDACSectors():
         DACsectors = []
