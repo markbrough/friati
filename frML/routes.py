@@ -15,39 +15,31 @@ def allowed_file(filename):
 def home():
     return render_template("index.html")
 
-@app.route("/convert/", methods=["POST", "GET"])
+@app.route("/convert/", methods=["POST"])
 def converter():
     XMLfilename='fr-ML.xml'
-    if (request.method=="POST"):
-        xls_file = request.files['file']
-        if ((xls_file) and allowed_file(xls_file.filename)):
-            input_data = request.files['file'].stream.read()
-            input_filename = None
-            try:
-                result = convert.convert(input_filename, 
-                                         input_data, 
-                                         "data/"+XMLfilename)
-                error = None
-            except Exception, e:
-                result = False
-                # Can we pass nicer error messages to the user?
-                error = "There was an unknown error. Please ensure your data \
-                is correctly formatted according to a predefined template."
-                error = e
-                pass
-        else:
-            error = "That file extension is not permitted. Files must be of \
-            the format: " + ", ".join(ALLOWED_EXTENSIONS)
+    xls_file = request.files['file']
+    if ((xls_file) and allowed_file(xls_file.filename)):
+        input_data = request.files['file'].stream.read()
+        input_filename = None
+        try:
+            result = convert.convert(input_filename, 
+                                     input_data, 
+                                     XMLfilename)
+            error = None
+        except Exception, e:
             result = False
+            # Can we pass nicer error messages to the user?
+            error = "There was an unknown error. Please ensure your data \
+            is correctly formatted according to a predefined template."
+            error = e
+            pass
     else:
-        erorr=""
-        input_filename = "frML/source/projects.xlsx"
-        input_data = open(input_filename).read()
-        result = convert.convert(input_filename, 
-                                 input_data, 
-                                 "data/"+XMLfilename)
+        error = "That file extension is not permitted. Files must be of \
+        the format: " + ", ".join(ALLOWED_EXTENSIONS)
+        result = False
 
     return render_template("convert.html", 
                            result=result,
-                           XMLfilename=XMLfilename,
+                           XMLfilename="data/"XMLfilename,
                            error=error)
