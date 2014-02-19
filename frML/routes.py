@@ -15,8 +15,11 @@ def allowed_file(filename):
 def home():
     return render_template("index.html")
 
-@app.route("/convert/", methods=["POST"])
+@app.route("/convert/", methods=["POST", "GET"])
 def converter():
+    if (request.method!="POST"):
+        return redirect(url_for('home'))
+
     XMLfilename='fr-ML.xml'
     xls_file = request.files['file']
     if ((xls_file) and allowed_file(xls_file.filename)):
