@@ -6,7 +6,7 @@ def getDataFromFile(f, file_contents, sheet):
 
     book = xlrd.open_workbook(filename=f, file_contents=file_contents)
     sheet = book.sheet_by_name(sheet)
-    headers = dict( (i, sheet.cell_value(0, i) ) for i in range(sheet.ncols) )
+    headers = dict( (i, sheet.cell_value(0, i).strip() ) for i in range(sheet.ncols) )
     
     def makeNiceNumber(val):
         valint = int(val)
@@ -24,7 +24,7 @@ def getDataFromFile(f, file_contents, sheet):
             val = val.strftime("%d/%m/%Y")
         elif cell_type == xlrd.XL_CELL_BOOLEAN:
             val = ('FALSE', 'TRUE')[val]
-        return (sheet.cell_value(0,j), val)
+        return (sheet.cell_value(0,j).strip(), val)
 
     out = [ dict(item(i,j) for j in range(sheet.ncols)) \
         for i in range(1, sheet.nrows) ]
