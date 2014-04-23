@@ -58,6 +58,7 @@
       $(".conversion-message").html("Please wait, converting (may take up to 1 minute)");
       $(".conversion-progress").fadeIn();
       progressBar();
+      $("form").submit();
     });
     function doIncrement(increment) {
         console.log("Incrementing!");
