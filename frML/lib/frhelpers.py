@@ -11,11 +11,11 @@ FR_STATUSES = {
         }
 
 STATUSCODES = {
-            '1': 'Pipeline/identification',
-            '2': 'Implementation',
-            '3': 'Completion',
-            '4': 'Post-completion',
-            '5': 'Cancelled'
+            '1': 'Planification',
+            '2': 'Actif',
+            '3': 'Finalisation',
+            '4': 'Fermé',
+            '5': 'Annulé'
         }
 
 FR_ORGS = {
@@ -38,23 +38,84 @@ FINANCETYPES = {
                 'code': '',
                 'text': ''
             },
-            "ACTION": {
-                'code': '500',
-                'text': 'EQUITY'
+            u"110 - Don sauf réorganisation de la dette": {
+                'code': '110',
+                'text': "Don sauf réorganisation de la dette"
             },
-            "GARANTIES DONNEES": {
-                'code': '900',
-                'text': 'OTHER SECURITIES/CLAIMS'
+            "410 - Prêt d'aide sauf réorganisation de la dette": {
+                'code': '410',
+                'text': "Prêt d'aide sauf réorganisation de la dette"
             },
-            "PRET": {
-                'code': '400',
-                'text': 'LOAN'
+            "610 - Remise de dette : créances d'APD (P)": {
+                'code': '610',
+                'text': "Remise de dette : créances d'APD (P)"
             },
-            "SUBVENTION": {
-                'code': '100',
-                'text': 'GRANT'
+            "610 - Remise de dette : créances d'APD (I)": {
+                'code': '610',
+                'text': "Remise de dette : créances d'APD (I)"
             }
         }
+
+AIDTYPES = {
+            "A01 - Soutien budgétaire général": {
+                'code': "A01",
+                'text': "Soutien budgétaire général",
+            },
+            "A02 - Soutien budgétaire sectoriel": {
+                "code": "A02",
+                "text": "Soutien budgétaire sectoriel",
+            },
+            "B01 - Contributions aux budgets réguliers des ONG, autres organismes privés, partenariats public-privé (PPP) et instituts de recherche": {
+                "code": "B01",
+                "text": "Contributions aux budgets réguliers des ONG, autres organismes privés, partenariats public-privé (PPP) et instituts de recherche",
+            },
+            "B02 - Contributions aux budgets réguliers des institutions multilatérales": {
+                "code": "B02",
+                "text": "Contributions aux budgets réguliers des institutions multilatérales",
+            },
+            "B03 - Contributions à des programmes ou fonds à objectif spécifique gérés par des organisations internationales (multilatérales, ONGI)": {
+                "code": "B03",
+                "text": "Contributions à des programmes ou fonds à objectif spécifique gérés par des organisations internationales (multilatérales, ONGI)",
+            },
+            "B04 - Fonds communs/financements groupés": {
+                "code": "B04",
+                "text": "Fonds communs/financements groupés",
+            },
+            "C01  - Interventions de type projet": {
+                "code": "C01",
+                "text": "Interventions de type projet",
+            },
+            "D01 - Personnel du pays donneur": {
+                "code": "D01",
+                "text": "Personnel du pays donneur",
+            },
+            "D02 - Autres formes d’assistance technique ": {
+                "code": "D02",
+                "text": "Autres formes d’assistance technique",
+            },
+            "E01 - Bourses/formations dans le pays donneur": {
+                "code": "E01",
+                "text": "Bourses/formations dans le pays donneur",
+            },
+            "E02 - Coûts imputés des étudiants": {
+                "code": "E02",
+                "text": "Coûts imputés des étudiants",
+            },
+            "F01 - Allégement de la dette": {
+                "code": "F01",
+                "text": "Allégement de la dette",
+            },
+            "G01 - Frais administratifs non inclus ailleurs": {
+                "code": "G01",
+                "text": "Frais administratifs non inclus ailleurs",
+            },
+            "H01 - Sensibilisation au développement ": {
+                "code": "H01", 
+                "text": "Sensibilisation au développement",
+            },
+
+}
+
 
 FR_SECTORS = {
     "": "",
