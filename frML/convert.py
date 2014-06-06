@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 
-# Scripts to convert project data from the French AFD website to the 
-# IATI-XML format.
+# Scripts to convert project data from a French-specific XLSX template to
+# the IATI-XML format.
 
 # MIT Licensed
 #
@@ -35,9 +35,10 @@ from datetime import datetime
 from lib import frhelpers
 from lib import xlsx_to_csv
 
-XLSX_FILE = "source/projects.xlsx"
+XLSX_FILE = "source/mauritanie.xlsx"
 thisfile_dir = os.path.dirname(os.path.abspath(__file__))
 SECTORS_CSV = os.path.join(thisfile_dir, 'lib/french_dac_codes.csv')
+COUNTRIES_CSV = os.path.join(thisfile_dir, 'lib/french_country_region_codes.csv')
 
 # Basic data setup
 reporting_org = u'Minist\xe8re des Affaires \xe9trang\xe8res'
@@ -59,6 +60,20 @@ def convert(input_filename, input_data, XMLfilename='fr-ML.xml'):
         return dict(DACsectors)
 
     DACsectors = getDACSectors()
+
+    def getCountries():
+        countries = []
+        countries_file = open(COUNTRIES_CSV)
+        countries_data = unicodecsv.DictReader(countries_file)
+        for country in countries_data:
+            countries.append((
+            country['name'], {'code': country['code'],
+                              'type': country['type'],
+                             }
+            ))
+        return dict(countries)
+
+    countries = getCountries()
 
     def dictMaker(locations):
         out = {}
@@ -115,7 +130,7 @@ def convert(input_filename, input_data, XMLfilename='fr-ML.xml'):
         if type =='code':
             return mappings[status]
         else:
-            return statuses[mappings[status]]
+            return unicode(statuses[mappings[status]].decode("utf-8"))
 
     def getExtendingOrg(org, typ):
         if (type(org) != list):
@@ -164,14 +179,18 @@ def convert(input_filename, input_data, XMLfilename='fr-ML.xml'):
         return activity
 
     def getIATIIdentifier(row):
-        if (row["Other activity identifiers"].strip() != ""):
-            return row["Other activity identifiers"].replace(" ","")
+        if (row["Project code"].strip() != ""):
+            return row["Project code"].replace(" ","")
         else:
-            return "ML-"+row["Champs"][7:]
+            return getCountryRegionCode(row["Country / Region"])+"-"+row["Champs"][7:]
 
     def getFinanceType(name, type):
         financetypes = frhelpers.FINANCETYPES
-        return financetypes[name][type]
+        return unicode(financetypes[name][type].decode("utf-8"))
+
+    def getAidType(name, type):
+        aidtypes = frhelpers.AIDTYPES
+        return unicode(aidtypes[name][type].decode("utf-8"))
 
     def makeDocuments(row, activity):
         # If it's an AFD project, look to see if there is a related
@@ -188,82 +207,6 @@ def convert(input_filename, input_data, XMLfilename='fr-ML.xml'):
             document_category.text = "Objectives / Purpose of activity"
             document_link.append(document_category)
             activity.append(document_link)
-        return activity
-
-    def makeResults(row, activity):
-
-        def _resulttype(r):
-            if r.startswith(u"Résultat"):
-                return "2"
-            else:
-                return "1"
-        
-        res_headers = [u'Résultat attendue 1',
-                         u'Résultat attendue 2',
-                         u'Résultat attendue 3',
-                         u'Résultat attendue 4',
-                         u'Résultat attendue 5']
-
-        real_headers = [u'Réalisation attendue 1',
-                         u'Réalisation attendue 2',
-                         u'Réalisation attendue 3',
-                         u'Réalisation attendue 4',
-                         u'Réalisation attendue 5']
-        count = 0
-
-        for r in real_headers:
-            if row[r] != "":
-                if count == 0:
-                    result = Element("result")
-                    result.set("type", "1")
-                    result_title = Element("title")
-                    result_title.text = u"Réalisations"
-                    result.append(result_title)        
-                    activity.append(result)
-                indicator = Element("indicator")
-                indicator.set("measure", "1")
-                result.append(indicator)
-                indicatortitle = Element("title")
-                indicatortitle.text = row[r]
-                indicatorperiod = Element("period")
-                indicatorperiodstart = Element("period-start")
-                indicatorperiodstart.text = makeISO(row["Activity Dates (Start Date)"])
-                indicator.append(indicatorperiodstart)
-                indicatorperiodend = Element("period-end")
-                indicatorperiodend.text = makeISO(row[u"Échéance "+r])
-                indicator.append(indicatorperiod)
-                indicatorperiod.append(indicatorperiodstart)
-                indicatorperiod.append(indicatorperiodend)
-                indicator.append(indicatortitle)
-                count+=1
-
-        count = 0
-        for r in res_headers:
-            if row[r] != "":
-                if count == 0:
-                    result = Element("result")
-                    result.set("type", "2")
-                    result_title = Element("title")
-                    result_title.text = u"Résultats"
-                    result.append(result_title)        
-                    activity.append(result)
-                indicator = Element("indicator")
-                indicator.set("measure", "1")
-                result.append(indicator)
-                indicatortitle = Element("title")
-                indicatortitle.text = row[r]
-                indicatorperiod = Element("period")
-                indicatorperiodstart = Element("period-start")
-                indicatorperiodstart.text = makeISO(row["Activity Dates (Start Date)"])
-                indicator.append(indicatorperiodstart)
-                indicatorperiodend = Element("period-end")
-                indicatorperiodend.text = makeISO(row[u"Échéance "+r])
-                indicator.append(indicatorperiod)
-                indicatorperiod.append(indicatorperiodstart)
-                indicatorperiod.append(indicatorperiodend)
-                indicator.append(indicatortitle)
-                count+=1
-
         return activity
 
     def removeDuplicates(doc):
@@ -285,6 +228,32 @@ def convert(input_filename, input_data, XMLfilename='fr-ML.xml'):
             for duplicate in (doc.xpath("//iati-identifier[text()='%s']" % did)):
                 duplicate.getparent().remove(duplicate)
         return doc
+
+    def getCountryRegionCode(countryregion):
+        try:
+            return countries[countryregion]['code']
+        except KeyError:
+            return 'NULL'
+
+    def getCountryRegion(activity, countryregion):
+        try:
+            item = countries[countryregion]
+            if item['type'] == 'country':
+                cou = Element("recipient-country")
+                cou.set("code", item['code'])
+                cou.text = countryregion
+                activity.append(cou)                 
+            else:
+                reg = Element("recipient-region")
+                reg.set("code", item['code'])
+                reg.text = countryregion
+                activity.append(reg) 
+        except KeyError:
+            reg = Element("recipient-region")
+            reg.set("code", "998")
+            reg.text = "Pays en développement, non spécifié"
+            activity.append(reg)
+        return activity
         
     def write_project(doc, row):
         #FIXME: currently excludes all activities with no project ID
@@ -309,15 +278,6 @@ def convert(input_filename, input_data, XMLfilename='fr-ML.xml'):
         description = Element("description")
         description.text = row["Activity Long Description"]
         activity.append(description)
-
-        avancement = SubElement(activity, "{http://data.gouv.fr}avancement")
-        avancement.text = row["Etat d'avancement"]
-
-        beneficiaires = SubElement(activity, "{http://data.gouv.fr}beneficiaires")
-        beneficiaires.text = row[u"Bénéficiaires finaux"]
-
-        cofinancement = SubElement(activity, "{http://data.gouv.fr}cofinancement")
-        cofinancement.text = row[u"Cofinancement"]
 
         iati_identifier = Element("iati-identifier")
         iati_identifier.text = getExtendingOrg(row["Reporting Organisation"], "id")+"-"+getIATIIdentifier(row)
@@ -354,13 +314,11 @@ def convert(input_filename, input_data, XMLfilename='fr-ML.xml'):
         activity.append(tied_status)
         
         aid_type = Element("default-aid-type")
-        aid_type.set("code", row["Default Aid Type"])
+        aid_type.set("code", getAidType(row["Default Aid Type"], 'code'))
+        aid_type.text = getAidType(row["Default Aid Type"], 'text')
         activity.append(aid_type)
 
-        recipient_country = Element("recipient-country")
-        recipient_country.set('code', "ML")
-        recipient_country.text = "Mali"
-        activity.append(recipient_country)
+        activity = getCountryRegion(activity, row["Country / Region"])
 
         funding_org = Element("participating-org")
         funding_org.set("role", "Funding")
@@ -376,12 +334,10 @@ def convert(input_filename, input_data, XMLfilename='fr-ML.xml'):
         implementing_org.text = row["Participating Organisation (Implementing)"]
         activity.append(implementing_org)
 
-        """
         finance_type = Element("default-finance-type")
-        finance_type.set("code", getFinanceType(row["funding_type"], 'code'))
-        finance_type.text = getFinanceType(row["funding_type"], 'text')
+        finance_type.set("code", getFinanceType(row["Default Finance Type"], 'code'))
+        finance_type.text = getFinanceType(row["Default Finance Type"], 'text')
         activity.append(finance_type)
-        """
 
         sector = Element("sector")
         sector.set("code", row["Sector (DAC CRS)"])
@@ -397,15 +353,12 @@ def convert(input_filename, input_data, XMLfilename='fr-ML.xml'):
 
         activity = makeLocations(row["Champs"], locations, activity)
 
-        """
-        activity_website = Element("activity-website")
-        activity_website.text = "http://www.afd.fr/base-projets/consulterProjet.action?idProjet="+row["id"]
-        activity.append(activity_website)
-        """
+        if row["Activity Website"] != "":
+            activity_website = Element("activity-website")
+            activity_website.text = row["Activity Website"]
+            activity.append(activity_website)
 
         activity = makeDocuments(row, activity)
-
-        activity = makeResults(row, activity)
 
         if row["Activity Budget"] != "":
             transaction = Element("transaction")
@@ -456,10 +409,7 @@ def convert(input_filename, input_data, XMLfilename='fr-ML.xml'):
     print "Generated locations"
     print "Generating activities ... (3/4)"
 
-    NSMAP = {"fr" : 'http://data.gouv.fr'}
-
-    doc = Element('iati-activities', 
-                   nsmap = NSMAP)
+    doc = Element('iati-activities')
     doc.set("version", "1.03")
     current_datetime = datetime.now().replace(microsecond=0).isoformat()
     doc.set("generated-datetime",current_datetime)
@@ -476,7 +426,7 @@ def convert(input_filename, input_data, XMLfilename='fr-ML.xml'):
     return True
 
 if __name__ == '__main__':
-    input_filename = "source/projects.xlsx"
+    input_filename = "source/mauritanie.xlsx"
     input_data = open(input_filename).read()
     if convert(input_filename, input_data):
         print "Successfully converted your data"
