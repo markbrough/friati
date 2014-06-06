@@ -1,0 +1,265 @@
+name,code,type
+AFGHANISTAN,AF,country
+AFRIQUE DU SUD,ZA,country
+"ÅLAND, ÎLES",AX,country
+ALBANIE,AL,country
+ALGERIE,DZ,country
+ALLEMAGNE,DE,country
+ANDORRE,AD,country
+ANGOLA,AO,country
+ANGUILLA,AI,country
+ANTARCTIQUE,AQ,country
+ANTIGUA ET BARBUDA,AG,country
+ARABIE SAOUDITE,SA,country
+ARGENTINE,AR,country
+ARMENIE,AM,country
+ARUBA,AW,country
+AUSTRALIE,AU,country
+AUTRICHE,AT,country
+AZERBAIDJAN,AZ,country
+BAHAMAS,BS,country
+BAHREIN,BH,country
+BANGLADESH,BD,country
+BARBADE,BB,country
+BELARUS,BY,country
+BELGIQUE,BE,country
+BELIZE,BZ,country
+BENIN,BJ,country
+BERMUDES,BM,country
+BHOUTAN,BT,country
+"BOLIVIE, l'ETAT PLURINATIONAL DE",BO,country
+"BONAIRE, SAINT-EUSTACHE ET SABA",BQ,country
+BOSNIE-HERZEGOVINE,BA,country
+BOTSWANA,BW,country
+"BOUVET, ILE",BV,country
+BRESIL,BR,country
+BRUNEI DARUSSALAM,BN,country
+BULGARIE,BG,country
+BURKINA FASO,BF,country
+BURUNDI,BI,country
+"CAIMANES, ILES",KY,country
+CAMBODGE,KH,country
+CAMEROUN,CM,country
+CANADA,CA,country
+CAP-VERT,CV,country
+"CENTRAFRICAINE, REPUBLIQUE",CF,country
+CHILI,CL,country
+CHINE,CN,country
+"CHRISTMAS, ILE",CX,country
+CHYPRE,CY,country
+"COCOS (KEELING), ILES",CC,country
+COLOMBIE,CO,country
+COMORES,KM,country
+CONGO,CG,country
+"CONGO, LA REPUBLIQUE DEMOCRATIQUE DU",CD,country
+"COOK, ILES",CK,country
+"COREE, REPUBLIQUE DE",KR,country
+"COREE, REPUBLIQUE POPULAIRE DEMOCRATIQUE DE",KP,country
+COSTA RICA,CR,country
+COTE D'IVOIRE,CI,country
+CROATIE,HR,country
+CUBA,CU,country
+CURACAO,CW,country
+DANEMARK,DK,country
+DJIBOUTI,DJ,country
+"DOMINICAINE, REPUBLIQUE",DO,country
+DOMINIQUE,DM,country
+EGYPTE,EG,country
+EL SALVADOR,SV,country
+EMIRATS ARABES UNIS,AE,country
+EQUATEUR,EC,country
+ERYTHREE,ER,country
+ESPAGNE,ES,country
+ESTONIE,EE,country
+ETATS-UNIS,US,country
+ETHIOPIE,ET,country
+"FALKLAND, ILES (MALVINAS)",FK,country
+"FEROE, ILES",FO,country
+FIDJI,FJ,country
+FINLANDE,FI,country
+FRANCE,FR,country
+GABON,GA,country
+GAMBIE,GM,country
+GEORGIE,GE,country
+GEORGIE DU SUD ET LES ILES SANDWICH DU SUD,GS,country
+GHANA,GH,country
+GIBRALTAR,GI,country
+GRECE,GR,country
+GRENADE,GD,country
+GROENLAND,GL,country
+GUADELOUPE,GP,country
+GUAM,GU,country
+GUATEMALA,GT,country
+GUERNESEY,GG,country
+GUINEE,GN,country
+GUINEE EQUATORIALE,GQ,country
+GUINEE-BISSAU,GW,country
+GUYANA,GY,country
+GUYANE FRANCAISE,GF,country
+HAITI,HT,country
+"HEARD, ILE ET MCDONALD, ILES",HM,country
+HONDURAS,HN,country
+HONG KONG,HK,country
+HONGRIE,HU,country
+ILE DE MAN,IM,country
+ILES MINEURES ELOIGNEES DES ETATS-UNIS,UM,country
+ILES VIERGES BRITANNIQUES,VG,country
+ILES VIERGES DES ETATS-UNIS,VI,country
+INDE,IN,country
+INDONESIE,ID,country
+"IRAN, REPUBLIQUE ISLAMIQUE D'",IR,country
+IRAQ,IQ,country
+IRLANDE,IE,country
+ISLANDE,IS,country
+ISRAEL,IL,country
+ITALIE,IT,country
+JAMAIQUE,JM,country
+JAPON,JP,country
+JERSEY,JE,country
+JORDANIE,JO,country
+KAZAKHSTAN,KZ,country
+KENYA,KE,country
+KIRGHIZISTAN,KG,country
+KIRIBATI,KI,country
+KOWEIT,KW,country
+"LAO, REPUBLIQUE DEMOCRATIQUE POPULAIRE",LA,country
+LESOTHO,LS,country
+LETTONIE,LV,country
+LIBAN,LB,country
+LIBERIA,LR,country
+"LIBYENNE, JAMAHIRIYA ARABE",LY,country
+LIECHTENSTEIN,LI,country
+LITUANIE,LT,country
+LUXEMBOURG,LU,country
+MACAO,MO,country
+"MACEDOINE, L'EX-REPUBLIQUE YOUGOSLAVE DE",MK,country
+MADAGASCAR,MG,country
+MALAISIE,MY,country
+MALAWI,MW,country
+MALDIVES,MV,country
+MALI,ML,country
+MALTE,MT,country
+"MARIANNES DU NORD, ILES",MP,country
+MAROC,MA,country
+"MARSHALL, ILES",MH,country
+MARTINIQUE,MQ,country
+MAURICE,MU,country
+MAURITANIE,MR,country
+MAYOTTE,YT,country
+MEXIQUE,MX,country
+"MICRONESIE, ETATS FEDERES DE",FM,country
+"MOLDOVA, REPUBLIQUE DE",MD,country
+MONACO,MC,country
+MONGOLIE,MN,country
+MONTENEGRO,ME,country
+MONTSERRAT,MS,country
+MOZAMBIQUE,MZ,country
+MYANMAR,MM,country
+NAMIBIE,NA,country
+NAURU,NR,country
+NEPAL,NP,country
+NICARAGUA,NI,country
+NIGER,NE,country
+NIGERIA,NG,country
+NIUE,NU,country
+"NORFOLK, ILE",NF,country
+NORVEGE,NO,country
+NOUVELLE-CALEDONIE,NC,country
+NOUVELLE-ZELANDE,NZ,country
+"OCEAN INDIEN, TERRITOIRE BRITANNIQUE DE L'",IO,country
+OMAN,OM,country
+OUGANDA,UG,country
+OUZBEKISTAN,UZ,country
+PAKISTAN,PK,country
+PALAOS,PW,country
+"PALESTINIEN OCCUPE, TERRITOIRE",PS,country
+PANAMA,PA,country
+PAPOUASIE-NOUVELLE-GUINEE,PG,country
+PARAGUAY,PY,country
+PAYS-BAS,NL,country
+PEROU,PE,country
+PHILIPPINES,PH,country
+PITCAIRN,PN,country
+POLOGNE,PL,country
+POLYNESIE FRANCAISE,PF,country
+PORTO RICO,PR,country
+PORTUGAL,PT,country
+QATAR,QA,country
+REUNION,RE,country
+ROUMANIE,RO,country
+ROYAUME-UNI,GB,country
+"RUSSIE, FEDERATION DE",RU,country
+RWANDA,RW,country
+SAHARA OCCIDENTAL,EH,country
+SAINT-BARTHELEMY,BL,country
+SAINT-KITTS-ET-NEVIS,KN,country
+SAINT-MARIN,SM,country
+SAINT-MARTIN (PARTIE FRANCAISE),MF,country
+SAINT-MARTIN (PARTIE NEERLANDAISE),SX,country
+SAINT-PIERRE-ET-MIQUELON,PM,country
+SAINT-SIEGE (ETAT DE LA CITE DU VATICAN),VA,country
+SAINT-VINCENT-ET-LES GRENADINES,VC,country
+"SAINTE-HELENE, ASCENSION ET TRISTAN DA CUNHA",SH,country
+SAINTE-LUCIE,LC,country
+"SALOMON, ILES",SB,country
+SAMOA,WS,country
+SAMOA AMERICAINES,AS,country
+SAO TOME-ET-PRINCIPE,ST,country
+SENEGAL,SN,country
+SERBIE,RS,country
+SEYCHELLES,SC,country
+SIERRA LEONE,SL,country
+SINGAPOUR,SG,country
+SLOVAQUIE,SK,country
+SLOVENIE,SI,country
+SOMALIE,SO,country
+SOUDAN,SD,country
+SRI LANKA,LK,country
+SUEDE,SE,country
+SUISSE,CH,country
+SURINAME,SR,country
+SVALBARD ET ILE JAN MAYEN,SJ,country
+SWAZILAND,SZ,country
+"SYRIENNE, REPUBLIQUE ARABE",SY,country
+TADJIKISTAN,TJ,country
+"TAIWAN, PROVINCE DE CHINE",TW,country
+"TANZANIE, REPUBLIQUE-UNIE DE",TZ,country
+TCHAD,TD,country
+"TCHEQUE, REPUBLIQUE",CZ,country
+TERRES AUSTRALES FRANCAISES,TF,country
+THAILANDE,TH,country
+TIMOR-LESTE,TL,country
+TOGO,TG,country
+TOKELAU,TK,country
+TONGA,TO,country
+TRINITE-ET-TOBAGO,TT,country
+TUNISIE,TN,country
+TURKMENISTAN,TM,country
+"TURKS ET CAIQUES, ILES",TC,country
+TURQUIE,TR,country
+TUVALU,TV,country
+UKRAINE,UA,country
+URUGUAY,UY,country
+VANUATU,VU,country
+"VATICAN, ETAT DE LA CITE DU",voir SAINT-SIEGE,country
+"VENEZUELA, REPUBLIQUE BOLIVARIENNE DU",VE,country
+VIET NAM,VN,country
+WALLIS ET FUTUNA,WF,country
+YEMEN,YE,country
+ZAMBIE,ZM,country
+ZIMBABWE,ZW,country
+"Europe, régional",89,region
+"Nord du Sahara, régional",189,region
+"Sud du Sahara, régional",289,region
+"Afrique, régional",298,region
+"Amérique N.& C., régional",389,region
+"Amérique du Sud, régional",489,region
+"Amérique, régional",498,region
+"Moyen-Orient, régional",589,region
+"Asie centrale, régional",619,region
+"Asie du Sud, régional",679,region
+"Asie du Sud & C., régional",689,region
+"Extrême-Orient, régional",789,region
+"Asie, régional",798,region
+"Océanie, régional",889,region
+"Pays en développement, non spécifié",998,region
