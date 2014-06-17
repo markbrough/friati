@@ -35,7 +35,7 @@ from datetime import datetime
 from lib import frhelpers
 from lib import xlsx_to_csv
 
-XLSX_FILE = "source/mauritanie.xlsx"
+XLSX_FILE = "source/projects-niger-afd.xlsx"
 thisfile_dir = os.path.dirname(os.path.abspath(__file__))
 SECTORS_CSV = os.path.join(thisfile_dir, 'lib/french_dac_codes.csv')
 COUNTRIES_CSV = os.path.join(thisfile_dir, 'lib/french_country_region_codes.csv')
@@ -44,6 +44,8 @@ COUNTRIES_CSV = os.path.join(thisfile_dir, 'lib/french_country_region_codes.csv'
 reporting_org = u'Minist\xe8re des Affaires \xe9trang\xe8res'
 reporting_org_id = u"FR-6"
 reporting_org_type = u"10"
+
+parent_activities = {}
 
 def convert(input_filename, input_data, XMLfilename='fr-ML.xml'):
     XMLfilename = os.path.join(thisfile_dir, 'static/data/', XMLfilename)
@@ -111,7 +113,7 @@ def convert(input_filename, input_data, XMLfilename='fr-ML.xml'):
             return "#####"
 
     def getCICIDSectorCode(sector):
-        return frhelpers.CICID_SECTORS[sector]
+        return frhelpers.CICID_SECTORS[sector.strip()]
 
     def checkIfRegion(name):
         if name in regions:
@@ -254,6 +256,27 @@ def convert(input_filename, input_data, XMLfilename='fr-ML.xml'):
             reg.text = "Pays en développement, non spécifié"
             activity.append(reg)
         return activity
+
+    def write_parent_activity(doc, parent_activity):
+        activity = Element("iati-activity")
+        activity.set("default-currency", "EUR")
+        activity.set("last-updated-datetime", makeISO(row[u"Date de mise \xe0 jour de la fiche"])+"T00:00:00")
+        activity.set("hierarchy", "1")
+        doc.insert(0, activity)
+
+        iati_identifier = Element("iati-identifier")
+        iati_identifier.text = parent_activity[0]
+        activity.append(iati_identifier)
+
+        title = Element("title")
+        title.text = parent_activity[1]["row"]["Activity Title"]
+        activity.append(title)
+
+        for child in parent_activity[1]["children"]:
+            rel = Element("related-activity")
+            rel.set("type", "2")
+            rel.set("ref", child)
+            activity.append(rel)
         
     def write_project(doc, row):
         #FIXME: currently excludes all activities with no project ID
@@ -265,6 +288,7 @@ def convert(input_filename, input_data, XMLfilename='fr-ML.xml'):
         activity.set("default-currency", "EUR")
         activity.set("last-updated-datetime", makeISO(row[u"Date de mise \xe0 jour de la fiche"])+"T00:00:00")
         doc.append(activity)
+
         rep_org = Element("reporting-org")
         rep_org.set("ref", getExtendingOrg(row["Reporting Organisation"], "id"))
         rep_org.set("type", "10")
@@ -280,7 +304,8 @@ def convert(input_filename, input_data, XMLfilename='fr-ML.xml'):
         activity.append(description)
 
         iati_identifier = Element("iati-identifier")
-        iati_identifier.text = getExtendingOrg(row["Reporting Organisation"], "id")+"-"+getIATIIdentifier(row)
+        activity_iati_identifier = getExtendingOrg(row["Reporting Organisation"], "id")+"-"+getIATIIdentifier(row)
+        iati_identifier.text = activity_iati_identifier
         activity.append(iati_identifier)
 
         activity_status = Element("activity-status")
@@ -293,10 +318,11 @@ def convert(input_filename, input_data, XMLfilename='fr-ML.xml'):
         start_date.set('iso-date', makeISO(row["Activity Dates (Start Date)"]))
         activity.append(start_date)
 
-        end_date = Element("activity-date")
-        end_date.set('type', 'end-planned')
-        end_date.set('iso-date', makeISO(row["Activity Dates (End Date)"]))
-        activity.append(end_date)
+        if (row["Activity Dates (End Date)"] != ""):
+            end_date = Element("activity-date")
+            end_date.set('type', 'end-planned')
+            end_date.set('iso-date', makeISO(row["Activity Dates (End Date)"]))
+            activity.append(end_date)
 
         collab_type = Element("collaboration-type")
         collab_type.set("code", "1")
@@ -397,6 +423,20 @@ def convert(input_filename, input_data, XMLfilename='fr-ML.xml'):
             tdate.text=datetime.now().date().isoformat()
             disbursement.append(tdate)
 
+        if (row["Parent project code (if applicable)"] != ""):
+            activity.set("hierarchy", "2")
+            rel = Element("related-activity")
+            rel.set("type", "1")
+            parent_ref = getExtendingOrg(row["Reporting Organisation"], "id")+"-"+row["Parent project code (if applicable)"]
+            rel.set("ref", parent_ref)
+            activity.append(rel)
+            if not parent_activities.get(parent_ref):
+                parent_activities[parent_ref] = {
+                    'row': row,
+                    'children': []
+                }
+            parent_activities[parent_ref]['children'].append(activity_iati_identifier)
+
     print "Starting up ..."
     print "Importing projects data ... (1/4)"
 
@@ -416,6 +456,9 @@ def convert(input_filename, input_data, XMLfilename='fr-ML.xml'):
 
     for row in csv_data:
         write_project(doc, row)
+
+    for parent_activity in parent_activities.items():
+        write_parent_activity(doc, parent_activity)
 	
     print "Generated activities"
     print "Writing activities ... (4/4)"
@@ -426,7 +469,7 @@ def convert(input_filename, input_data, XMLfilename='fr-ML.xml'):
     return True
 
 if __name__ == '__main__':
-    input_filename = "source/mauritanie.xlsx"
+    input_filename = XLSX_FILE
     input_data = open(input_filename).read()
     if convert(input_filename, input_data):
         print "Successfully converted your data"
